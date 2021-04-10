@@ -1,16 +1,16 @@
 {
-  "name": "Testjob10",
+  "name": "Testjob13",
   "initiators": [
     {
       "type": "RunLog",
       "params": {
-        "address": "0xa4B3F31cED36617A454F660Be10B97456922cbE0"
+        "address": "0x591E0ACAfffDE1129124d6CD4712b1fA25820601"
       }
     }
   ],
   "tasks": [
     {
-      "type": "httpgetwithunrestrictednetworkaccess"
+      "type": "HTTPGet"
     },
     {
       "type": "JSONParse"

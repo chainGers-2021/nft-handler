@@ -133,17 +133,17 @@ pam@g3:~/cl-node$ tree -I 'node_modules|build'
 ```
 $ truffle run verify Oracle APIConsumer Token --network kovan --license MIT
 Verifying Oracle
-Contract source code already verified: https://kovan.etherscan.io/address/0xa4B3F31cED36617A454F660Be10B97456922cbE0#contracts
+Contract source code already verified: https://kovan.etherscan.io/address/0xDcE846f83905005a1cE1975CaB24989b0952148f#writeContract
 Verifying APIConsumer
-Pass - Verified: https://kovan.etherscan.io/address/0xBdC3FcC0BEd515F09221dB7FA1B161052D8a3F23#contracts
+Pass - Verified: https://kovan.etherscan.io/address/0x6C000Dced6241a9d51BB05a8162e77382288caED#writeContract
 Verifying Token
-Pass - Verified: https://kovan.etherscan.io/address/0xFE96C2094A3dF1ec1B7C3d42B92Fe7DB6cFd4e66#contracts
+Pass - Verified: https://kovan.etherscan.io/address/0x85F60704D2C0012eDfAc900E094119De63013340#readContract
 Successfully verified 3 contract(s).
 Done in 29.99s.
 ```
 
 - [Node address: `0xBcabE53a3cd718bc48137831f6F788C8AB35D10a`](https://kovan.etherscan.io/address/0xBcabE53a3cd718bc48137831f6F788C8AB35D10a)
-- Job address: `68e165d25145484b9effc50925d09889`
+- JobId: `68e165d25145484b9effc50925d09889`
 
 # **How to run local express server**
 

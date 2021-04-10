@@ -12,4 +12,6 @@ module.exports = async function (deployer) {
   holder = await APIConsumer.deployed();
   await holder.mintTokens("LINK");
   await holder.mintTokens("BAT");
+  await holder.mintTokens("ZRX");
+  await holder.mintTokens("SNX");
 };

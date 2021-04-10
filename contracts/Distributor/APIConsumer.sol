@@ -11,9 +11,10 @@ contract APIConsumer is ChainlinkClient, Ownable, TokenHandler {
         address claimant;
         string tokenSymbol;
     }
-    uint256 private constant ORACLE_PAYMENT = LINK/10;
+    uint256 private constant ORACLE_PAYMENT = 1 * LINK;
     mapping(bytes32 => claimInfo) public claimRecord;
 
+    /// @notice Event emitted to successful token transfer
     event RequestNFTClaimFullfilled(
         bytes32 indexed requestId,
         bool indexed _result,
@@ -21,11 +22,7 @@ contract APIConsumer is ChainlinkClient, Ownable, TokenHandler {
     );
 
     /// @notice NODE is initialized, only NODE can invoke fulfillNFTClaim()
-    constructor(address  _tokenAddr)
-        public
-        Ownable()
-        TokenHandler(_tokenAddr)
-    {
+    constructor(address _tokenAddr) public Ownable() TokenHandler(_tokenAddr) {
         setPublicChainlinkToken();
     }
 
@@ -48,16 +45,20 @@ contract APIConsumer is ChainlinkClient, Ownable, TokenHandler {
                 this.fulfillNFTClaim.selector
             );
 
-        // Turned off for testing purposes
-        // req.add(
-        //     "get",
-        //     string(abi.encodePacked(abi.encodePacked(msg.sender), _tokenSymbol))
-        // );
         req.add(
             "get",
-            "https://immense-mesa-34535.herokuapp.com/check/nft/0xcfdf8fffaa4dd7d777d448cf93dd01a45e97d782/LINK"
+            string(
+                abi.encodePacked(
+                    "https://glacial-bayou-75167.herokuapp.com/check/nft/",
+                    addressToString(msg.sender),
+                    "/",
+                    _tokenSymbol
+                )
+            )
         );
+
         req.add("path", "result");
+
         bytes32 requestId =
             sendChainlinkRequestTo(_oracle, req, ORACLE_PAYMENT);
         claimRecord[requestId] = claimInfo(msg.sender, _tokenSymbol);
@@ -96,5 +97,20 @@ contract APIConsumer is ChainlinkClient, Ownable, TokenHandler {
             // solhint-disable-line no-inline-assembly
             result := mload(add(source, 32))
         }
+    }
+
+    /// @notice helper function to convert address to string
+    /// take from: https://ethereum.stackexchange.com/a/88201/64382
+     function addressToString(address _addr) internal view returns(string memory) {
+       bytes32 _bytes = bytes32(uint256(_addr));
+       bytes memory HEX = "0123456789abcdef";
+       bytes memory _string = new bytes(42);
+       _string[0] = '0';
+       _string[1] = 'x';
+       for(uint i = 0; i < 20; i++) {
+           _string[2+i*2] = HEX[uint8(_bytes[i + 12] >> 4)];
+           _string[3+i*2] = HEX[uint8(_bytes[i + 12] & 0x0f)];
+       }
+       return string(_string);
     }
 }

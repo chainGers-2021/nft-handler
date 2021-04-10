@@ -5,7 +5,6 @@ import "@openzeppelin/contracts/token/ERC1155/ERC1155Holder.sol";
 import "./../ERC1155/Token.sol";
 
 abstract contract TokenHandler is ERC1155Holder {
-    // Symbol of token => collectibleId
     mapping(string => uint256) public tokenSymbolToCollectibleId;
     // Address of claimant => Symbol of token => roundId (or collectible id ?)
     mapping(address => mapping(string => uint256)) public claims;
@@ -25,7 +24,10 @@ abstract contract TokenHandler is ERC1155Holder {
     }
 
     /// @notice Oracle node is supposed to fullfill this transaction
-    function rewardNFT(string memory _tokenSymbol, address _claimant) virtual internal {
+    function rewardNFT(string memory _tokenSymbol, address _claimant)
+        internal
+        virtual
+    {
         // require(msg.sender == address(this));
         require(
             claims[_claimant][_tokenSymbol] !=

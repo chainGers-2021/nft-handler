@@ -13,7 +13,7 @@ app.get("/status", (req, res) => {
   res.send({ status: "OK" });
 });
 
-// Click this for testing: http://localhost:5000/check/nft/0xcfdf8fffaa4dd7d777d448cf93dd01a45e97d782/LINK
+// Click this for testing: https://glacial-bayou-75167.herokuapp.com/check/nft/0xcfdf8fffaa4dd7d777d448cf93dd01a45e97d782/LINK
 app.get("/check/nft/:user/:tokenSymbol", async (req, res) => {
   const user = req.params.user.toLowerCase();
   const tokenSymbol = req.params.tokenSymbol;
@@ -28,7 +28,7 @@ app.get("/check/nft/:user/:tokenSymbol", async (req, res) => {
   };
 
 
-  
+
   winnerArray = (await axios.post(url, query)).data.data.symbols;
 
 
