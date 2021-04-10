@@ -4,19 +4,17 @@ pragma solidity >=0.4.22 <0.9.0;
 import "@openzeppelin/contracts/token/ERC1155/ERC1155Holder.sol";
 import "./../ERC1155/Token.sol";
 
-abstract contract TokenHandler is ERC1155Holder {
-    mapping(string => uint256) public tokenSymbolToCollectibleId;
-    // Address of claimant => Symbol of token => roundId (or collectible id ?)
-    mapping(address => mapping(string => uint256)) public claims;
-
+contract TokenHandler is ERC1155Holder {
     address public tokenAddr;
+    mapping(string => uint256) public tokenSymbolToCollectibleId;
+    mapping(address => mapping(string => uint256)) public claims;
 
     constructor(address _tokenAddr) public {
         tokenAddr = _tokenAddr;
     }
 
     /// @notice Token minting can only be done by admins
-    function mintTokens(string calldata _tokenSymbol) external {
+    function _mintTokens(string calldata _tokenSymbol) virtual internal {
         Token(tokenAddr).mint(address(this), 5);
         tokenSymbolToCollectibleId[_tokenSymbol] =
             Token(tokenAddr).collectibleId() -
@@ -24,7 +22,7 @@ abstract contract TokenHandler is ERC1155Holder {
     }
 
     /// @notice Oracle node is supposed to fullfill this transaction
-    function rewardNFT(string memory _tokenSymbol, address _claimant)
+    function _rewardNFT(string memory _tokenSymbol, address _claimant)
         internal
         virtual
     {

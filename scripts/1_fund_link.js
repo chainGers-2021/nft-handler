@@ -22,5 +22,5 @@ module.exports = async function (callback) {
     .send({ from: acc[0] });
   console.log("gasUsed: ", tx.gasUsed);
 
-  callback("\nFinished.");
+  callback("Finished.");
 };

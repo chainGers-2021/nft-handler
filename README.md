@@ -2,10 +2,8 @@
 
 ## Setting up the `.env` file
 
-```
-    mkdir ~/.chainlink-kovan
-    touch .env
-```
+- `mkdir ~/.chainlink-kovan`
+- `touch .env`
 
 - Put this inside your `~/.chainlink-kovan/.env` file:
 
@@ -24,13 +22,10 @@
 
 ## Set the local `postgres` DATABASE_URL Config
 
-```
-    sudo -i -u postgres
-    psql
-    ALTER USER postgres PASSWORD '12345678'
-```
-
-- Postges setup:
+- `sudo -i -u postgres`
+- `psql`
+- `ALTER USER postgres PASSWORD '12345678'`
+- **Postges setup**:
 
 ```
     username: postgres
@@ -40,14 +35,14 @@
     database: postgres
 ```
 
-- Add these to your `~/.chainlink-kovan/.env` file
+- Add these to your `~/.chainlink-kovan/.env` file:
 
 ```
     DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres
     DATABASE_TIMEOUT=0
 ```
 
-## Resources
+## Helpful resources
 
 - https://docs.chain.link/docs/running-a-chainlink-node
 - https://docs.chain.link/docs/fulfilling-requests
@@ -55,18 +50,14 @@
 
 # **How to start chainlink node?**
 
-```
-    cd ~/.chainlink-kovan
-    docker run --name chainlink-kovan --network host -p 6688:6688 -v ~/.chainlink-kovan:/chainlink -it --env-file=.env smartcontract/chainlink:0.10.3 local n
-
-    # Visit in browser
-    http://localhost:6688/
-
-    # Stopping & deleting container:
-    docker stop chainlink-kovan && docker container rm chainlink-kovan
-```
-
+- `cd ~/.chainlink-kovan`
+- `docker run --name chainlink-kovan --network host -p 6688:6688 -v ~/.chainlink-kovan:/chainlink -it --env-file=.env smartcontract/chainlink:0.10.3 local n`
+- [Visit in browser: localhost:6688](http://localhost:6688/) and sign in with your credentials
 - `docker network ls`: make sure host is there.
+
+# Stopping & deleting container:
+
+- `docker stop chainlink-kovan && docker container rm chainlink-kovan`
 
 ## Screenshots
 
@@ -87,9 +78,30 @@
   - Add a new job from the NODE UI, with [job spec](https://docs.chain.link/docs/job-specifications#config) from: `job_specs/eth=>bool.json` & **don't forget to copy Oracle address into job_spec**
 
 - `truffle exec scripts/3_request.js --network kovan`
+- You can see a job assingned in the node operator browser window:
+  - as it will succeed, check the transaction hash for any errors
 - `truffle exec scripts/4_read_val.js --network kovan`
 
-- `node main.js`: Check postgres connection & NODE funds
+- `node help/postgres.check.js`: Check postgres connection & NODE funds
+
+# **How to run local express server**
+
+- `yarn server`: Start in _dev_ mode
+- `yarn start`: Start in _prod_ mode
+- Open a query like: [http://localhost:5000/check/nft/0xcfdf8fffaa4dd7d777d448cf93dd01a45e97d782/LINK]
+
+## **ENV** variables for the project
+
+A template of `.env` file is already given as `.env.example`, set them accordingly:
+
+```
+LINK_CONTRACT_ADDRESS="..."
+RPC_URL="..."
+MNEMONIC="..."
+NODE_ADDRESS="..."
+JOB_ID="..."
+ETHERSCAN_API_KEY="..."
+```
 
 ## Directory structure
 
@@ -130,22 +142,8 @@ pam@g3:~/cl-node$ tree -I 'node_modules|build'
 
 ## Deployments
 
-```
-$ truffle run verify Oracle APIConsumer Token --network kovan --license MIT
-Verifying Oracle
-Contract source code already verified: https://kovan.etherscan.io/address/0xDcE846f83905005a1cE1975CaB24989b0952148f#writeContract
-Verifying APIConsumer
-Pass - Verified: https://kovan.etherscan.io/address/0x6C000Dced6241a9d51BB05a8162e77382288caED#writeContract
-Verifying Token
-Pass - Verified: https://kovan.etherscan.io/address/0x85F60704D2C0012eDfAc900E094119De63013340#readContract
-Successfully verified 3 contract(s).
-Done in 29.99s.
-```
-
-- [Node address: `0xBcabE53a3cd718bc48137831f6F788C8AB35D10a`](https://kovan.etherscan.io/address/0xBcabE53a3cd718bc48137831f6F788C8AB35D10a)
-- JobId: `68e165d25145484b9effc50925d09889`
-
-# **How to run local express server**
-
-- `yarn server`: Start in _dev_ mode
-- `yarn start`: Start in _prod_ mode
+- [**Verifying Oracle**](https://kovan.etherscan.io/address/0xDcE846f83905005a1cE1975CaB24989b0952148f)
+- [**Verifying APIConsumer**](https://kovan.etherscan.io/address/0x6C000Dced6241a9d51BB05a8162e77382288caED)
+- [**Verifying Token**](https://kovan.etherscan.io/address/0x85F60704D2C0012eDfAc900E094119De63013340)
+- [**Node address: `0xBcabE53a3cd718bc48137831f6F788C8AB35D10a`**](https://kovan.etherscan.io/address/0xBcabE53a3cd718bc48137831f6F788C8AB35D10a)
+- [JobId: `68e165d25145484b9effc50925d09889`](./job_specs/eth=>bool.json)
