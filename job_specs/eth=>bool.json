@@ -1,0 +1,28 @@
+{
+  "name": "Testjob10",
+  "initiators": [
+    {
+      "type": "RunLog",
+      "params": {
+        "address": "0xa4B3F31cED36617A454F660Be10B97456922cbE0"
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "type": "httpgetwithunrestrictednetworkaccess"
+    },
+    {
+      "type": "JSONParse"
+    },
+    {
+      "type": "ethbool"
+    },
+    {
+      "type": "EthTx"
+    }
+  ],
+  "startAt": "2020-02-09T15:13:03Z",
+  "endAt": null,
+  "minPayment": "1000000000000000000"
+}
