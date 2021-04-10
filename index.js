@@ -26,6 +26,7 @@ app.get("/check/nft/:user/:tokenSymbol", async (req, res) => {
       tokenSymbol +
       `"}) { id totalDeposit symbol user eligibleForNFT } }`,
   };
+  
   winnerArray = (await axios.post(url, query)).data.data.symbols;
 
 
