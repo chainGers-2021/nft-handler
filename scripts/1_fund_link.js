@@ -11,16 +11,10 @@ module.exports = async function (callback) {
 
   const acc = await web3.eth.getAccounts();
 
-  const amount = (5 * 10 ** 18).toString();
-  tx = await link.methods
-    .transfer((await Oracle.deployed()).address, amount)
-    .send({ from: acc[0] });
-  console.log("gasUsed: ", tx.gasUsed);
-
   tx = await link.methods
     .transfer((await APIConsumer.deployed()).address, amount)
     .send({ from: acc[0] });
   console.log("gasUsed: ", tx.gasUsed);
 
-  callback("\nFinished.");
+  callback("Finished.");
 };

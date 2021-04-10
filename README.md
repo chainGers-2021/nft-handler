@@ -59,23 +59,23 @@
     cd ~/.chainlink-kovan
     docker run --name chainlink-kovan --network host -p 6688:6688 -v ~/.chainlink-kovan:/chainlink -it --env-file=.env smartcontract/chainlink:0.10.3 local n
 
-    Visit: http://localhost:6688/
-```
+    # Visit in browser
+    http://localhost:6688/
 
-- Stopping & deleting container:
-
-```
+    # Stopping & deleting container:
     docker stop chainlink-kovan && docker container rm chainlink-kovan
 ```
 
 - `docker network ls`: make sure host is there.
 
 ## Screenshots
- - <img src="./help/1.png" width="800" />
- - <img src="./help/3.png" width="800" />
- - <img src="./help/2.png" width="800" />
+
+- <img src="./help/1.png" width="800" />
+- <img src="./help/3.png" width="800" />
+- <img src="./help/2.png" width="800" />
 
 # **How to deploy APIConsumer**
+
 - Assuming that you have successfully setup the chainlink node.
 - `truffle compile`
 - `truffle migrate --reset --network kovan`/`truffle migrate --f 3 --network kovan`(If you update APIConsumer only.)
@@ -146,5 +146,6 @@ Done in 29.99s.
 - Job address: `68e165d25145484b9effc50925d09889`
 
 # **How to run local express server**
-- `yarn server`: Start in *dev* mode
-- `yarn start`: Start in *prod* mode
+
+- `yarn server`: Start in _dev_ mode
+- `yarn start`: Start in _prod_ mode
