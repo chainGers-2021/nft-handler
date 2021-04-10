@@ -28,6 +28,7 @@ app.get("/check/nft/:user/:tokenSymbol", async (req, res) => {
   };
   winnerArray = (await axios.post(url, query)).data.data.symbols;
 
+
   assert(winnerArray.length <= 5 && winnerArray.length >= 0);
 
   for (i = 0; i < winnerArray.length; i++) {
