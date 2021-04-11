@@ -2,7 +2,6 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 import "@chainlink/contracts/src/v0.6/Oracle.sol";
-import "@chainlink/contracts/src/v0.6/ChainlinkClient.sol";
 import "@chainlink/contracts/src/v0.6/vendor/Ownable.sol";
 import "./TokenHandler.sol";
 
@@ -12,12 +11,11 @@ import "./TokenHandler.sol";
 /// @dev ChainlinkClient Inheritance: to create and
 ///        fullfull requests through chainlink oracle
 ///      Ownable
-contract APIConsumer is ChainlinkClient, Ownable, TokenHandler {
+contract APIConsumer is Ownable, TokenHandler {
     struct claimInfo {
         address claimant;
         string tokenSymbol;
     }
-    uint256 private constant ORACLE_PAYMENT = 1 * LINK;
     mapping(bytes32 => claimInfo) public claimRecord;
 
     /// @notice Event emitted to successful token transfer
@@ -28,9 +26,7 @@ contract APIConsumer is ChainlinkClient, Ownable, TokenHandler {
     );
 
     /// @notice NODE is initialized, only NODE can invoke fulfillNFTClaim()
-    constructor(address _tokenAddr) public Ownable() TokenHandler(_tokenAddr) {
-        setPublicChainlinkToken();
-    }
+    constructor(address _tokenAddr) public Ownable() TokenHandler(_tokenAddr) {}
 
     /// @notice Can be only called from admin
     function mintTokens(string memory _tokenSymbol) public onlyOwner {
@@ -41,7 +37,8 @@ contract APIConsumer is ChainlinkClient, Ownable, TokenHandler {
     function requestNFTClaim(
         address _oracle,
         string memory _jobId,
-        string memory _tokenSymbol
+        string memory _tokenSymbol,
+        bytes32 _requestId
     ) public {
         require(
             claims[msg.sender][_tokenSymbol] !=
@@ -49,37 +46,12 @@ contract APIConsumer is ChainlinkClient, Ownable, TokenHandler {
             "NFT already claimed for the token symbol !"
         );
 
-        Chainlink.Request memory req =
-            buildChainlinkRequest(
-                stringToBytes32(_jobId),
-                address(this),
-                this.fulfillNFTClaim.selector
-            );
-
-        req.add(
-            "get",
-            string(
-                abi.encodePacked(
-                    "https://glacial-bayou-75167.herokuapp.com/check/nft/",
-                    addressToString(msg.sender),
-                    "/",
-                    _tokenSymbol
-                )
-            )
-        );
-
-        req.add("path", "result");
-
-        bytes32 requestId =
-            sendChainlinkRequestTo(_oracle, req, ORACLE_PAYMENT);
+        bytes32 requestId = _requestId;
         claimRecord[requestId] = claimInfo(msg.sender, _tokenSymbol);
     }
 
     /// @notice request fullfilled by NODE
-    function fulfillNFTClaim(bytes32 _requestId, bool _result)
-        public
-        recordChainlinkFulfillment(_requestId)
-    {
+    function fulfillNFTClaim(bytes32 _requestId, bool _result) public {
         if (_result) {
             _rewardNFT(
                 claimRecord[_requestId].tokenSymbol,
