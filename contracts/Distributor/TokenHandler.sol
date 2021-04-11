@@ -14,7 +14,7 @@ contract TokenHandler is ERC1155Holder {
     }
 
     /// @notice Token minting can only be done by admins
-    function _mintTokens(string calldata _tokenSymbol) virtual internal {
+    function _mintTokens(string memory _tokenSymbol) virtual internal {
         Token(tokenAddr).mint(address(this), 5);
         tokenSymbolToCollectibleId[_tokenSymbol] =
             Token(tokenAddr).collectibleId() -

@@ -33,7 +33,7 @@ contract APIConsumer is ChainlinkClient, Ownable, TokenHandler {
     }
 
     /// @notice Can be only called from admin
-    function mintTokens(string calldata _tokenSymbol) public onlyOwner {
+    function mintTokens(string memory _tokenSymbol) public onlyOwner {
         _mintTokens(_tokenSymbol);
     }
 

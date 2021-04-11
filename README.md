@@ -142,8 +142,9 @@ pam@g3:~/cl-node$ tree -I 'node_modules|build'
 
 ## Deployments
 
-- [**Verifying Oracle**](https://kovan.etherscan.io/address/0xDcE846f83905005a1cE1975CaB24989b0952148f)
-- [**Verifying APIConsumer**](https://kovan.etherscan.io/address/0x6C000Dced6241a9d51BB05a8162e77382288caED)
-- [**Verifying Token**](https://kovan.etherscan.io/address/0x85F60704D2C0012eDfAc900E094119De63013340)
+- [**Verifying Oracle**](https://kovan.etherscan.io/address/0x67890F4627D46E099fE490fF9D8ac1Cf5290b1F0#contracts)
+- [**Verifying APIConsumer**](https://kovan.etherscan.io/address/0x20750a5ae430225B41789e03a8b5889b5c9d5E70#contracts)
+- [**Verifying Token**](https://kovan.etherscan.io/address/0x95BeFa7cf8801b1db372e2B1908FbEBB7D5810E1#contracts)
 - [**Node address: `0xBcabE53a3cd718bc48137831f6F788C8AB35D10a`**](https://kovan.etherscan.io/address/0xBcabE53a3cd718bc48137831f6F788C8AB35D10a)
-- [JobId: `68e165d25145484b9effc50925d09889`](./job_specs/eth=>bool.json)
+- [JobId: `0f79687897bc48b8928bd133a52042e2`](./job_specs/eth=>bool.json)
+  
