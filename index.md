@@ -61,9 +61,9 @@
 
 ## Screenshots
 
-- <img src="./help/1.png" width="800" />
-- <img src="./help/3.png" width="800" />
-- <img src="./help/2.png" width="800" />
+- <img src="https://raw.githubusercontent.com/chainGers-2021/nft-handler/main/help/1.png" width="800" />
+- <img src="https://raw.githubusercontent.com/chainGers-2021/nft-handler/main/help/3.png" width="800" />
+- <img src="https://raw.githubusercontent.com/chainGers-2021/nft-handler/main/help/2.png" width="800" />
 
 # **How to deploy APIConsumer**
 
@@ -146,10 +146,4 @@ pam@g3:~/cl-node$ tree -I 'node_modules|build'
 - [**Verified APIConsumer**](https://kovan.etherscan.io/address/0x20750a5ae430225B41789e03a8b5889b5c9d5E70#contracts)
 - [**Verified Token**](https://kovan.etherscan.io/address/0x95BeFa7cf8801b1db372e2B1908FbEBB7D5810E1#contracts)
 - [**Node address: `0xBcabE53a3cd718bc48137831f6F788C8AB35D10a`**](https://kovan.etherscan.io/address/0xBcabE53a3cd718bc48137831f6F788C8AB35D10a)
-<<<<<<< Updated upstream:index.md
-- [JobId: `0f79687897bc48b8928bd133a52042e2`](./job_specs/eth=>bool.json)
-  
-=======
 - [**JobId: `0f79687897bc48b8928bd133a52042e2`**](./job_specs/eth=>bool.json)
-  
->>>>>>> Stashed changes:README.md
