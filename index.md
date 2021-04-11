@@ -88,7 +88,7 @@
 
 - `yarn server`: Start in _dev_ mode
 - `yarn start`: Start in _prod_ mode
-- Open a query like: [http://localhost:5000/check/nft/0xcfdf8fffaa4dd7d777d448cf93dd01a45e97d782/LINK]
+- Open a query like: [http://localhost:5000/check/nft/0xcfdf8fffaa4dd7d777d448cf93dd01a45e97d782/LINK](http://localhost:5000/check/nft/0xcfdf8fffaa4dd7d777d448cf93dd01a45e97d782/LINK)
 
 ## **ENV** variables for the project
 
@@ -142,9 +142,14 @@ pam@g3:~/cl-node$ tree -I 'node_modules|build'
 
 ## Deployments
 
-- [**Verifying Oracle**](https://kovan.etherscan.io/address/0x67890F4627D46E099fE490fF9D8ac1Cf5290b1F0#contracts)
-- [**Verifying APIConsumer**](https://kovan.etherscan.io/address/0x20750a5ae430225B41789e03a8b5889b5c9d5E70#contracts)
-- [**Verifying Token**](https://kovan.etherscan.io/address/0x95BeFa7cf8801b1db372e2B1908FbEBB7D5810E1#contracts)
+- [**Verified Oracle**](https://kovan.etherscan.io/address/0x67890F4627D46E099fE490fF9D8ac1Cf5290b1F0#contracts)
+- [**Verified APIConsumer**](https://kovan.etherscan.io/address/0x20750a5ae430225B41789e03a8b5889b5c9d5E70#contracts)
+- [**Verified Token**](https://kovan.etherscan.io/address/0x95BeFa7cf8801b1db372e2B1908FbEBB7D5810E1#contracts)
 - [**Node address: `0xBcabE53a3cd718bc48137831f6F788C8AB35D10a`**](https://kovan.etherscan.io/address/0xBcabE53a3cd718bc48137831f6F788C8AB35D10a)
+<<<<<<< Updated upstream:index.md
 - [JobId: `0f79687897bc48b8928bd133a52042e2`](./job_specs/eth=>bool.json)
   
+=======
+- [**JobId: `0f79687897bc48b8928bd133a52042e2`**](./job_specs/eth=>bool.json)
+  
+>>>>>>> Stashed changes:README.md
