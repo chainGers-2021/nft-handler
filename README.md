@@ -1,5 +1,8 @@
-# **How to setup chainlink node**
+# HODLTogether NFT Distribution
 
+<img src="./help/userflow.png" width="900" />
+
+# **How to setup chainlink node**
 ## Setting up the `.env` file
 
 - `mkdir ~/.chainlink-kovan`
