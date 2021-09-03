@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@chainlink/contracts": "^0.1.7",
-    "@openzeppelin/contracts": "3.4.1",
+    "@openzeppelin/contracts": "3.4.2",
     "@truffle/hdwallet-provider": "^1.2.6",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
